@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz : Connais-tu Olivier ?</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .question { margin-bottom: 20px; }
+    .question h3 { color: #cc007a; }
+    .result { font-weight: bold; margin-top: 20px; font-size: 1.2rem; }
+  </style>
+  <script>
+    function corrigerQuiz() {
+      const bonnesReponses = ["q1b", "q2a", "q3a", "q4a", "q5a", "q6a"];
+      let score = 0;
+      bonnesReponses.forEach(id => {
+        const input = document.getElementById(id);
+        if (input.checked) score++;
+      });
+      let commentaire = "";
+      if (score === 6) commentaire = "🔥 Tu es un(e) vrai(e) ami(e) d’Olivier !";
+      else if (score >= 4) commentaire = "😎 Tu connais bien Olivier !";
+      else commentaire = "🤔 Tu devrais lui parler un peu plus !";
+      document.getElementById("resultat").innerText = `Score : ${score}/6 | ${commentaire}`;
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>🧠 Quiz : Connais-tu Olivier ?</h1>
+    <form onsubmit="event.preventDefault(); corrigerQuiz();">
+      <div class="question">
+        <h3>1. Quelle est la date de naissance d’Olivier ?</h3>
+        <label><input type="radio" id="q1a" name="q1"> 10 juin</label><br>
+        <label><input type="radio" id="q1b" name="q1"> 12 juillet</label><br>
+        <label><input type="radio" id="q1c" name="q1"> 14 août</label>
+      </div>
+      <div class="question">
+        <h3>2. Quel est son plat préféré ?</h3>
+        <label><input type="radio" id="q2a" name="q2"> Le riz</label><br>
+        <label><input type="radio" id="q2b" name="q2"> Le spaghetti</label><br>
+        <label><input type="radio" id="q2c" name="q2"> Le piment seul</label>
+      </div>
+      <div class="question">
+        <h3>3. Quel est son surnom le plus courant ?</h3>
+        <label><input type="radio" id="q3a" name="q3"> Olivier</label><br>
+        <label><input type="radio" id="q3b" name="q3"> Zann</label><br>
+        <label><input type="radio" id="q3c" name="q3"> Oli Cool</label>
+      </div>
+      <div class="question">
+        <h3>4. Quel artiste préfère-t-il ?</h3>
+        <label><input type="radio" id="q4a" name="q4"> Gims</label><br>
+        <label><input type="radio" id="q4b" name="q4"> Burna Boy</label><br>
+        <label><input type="radio" id="q4c" name="q4"> Davido</label>
+      </div>
+      <div class="question">
+        <h3>5. Quelle est sa boisson préférée ?</h3>
+        <label><input type="radio" id="q5a" name="q5"> Aucune, il ne boit pas trop</label><br>
+        <label><input type="radio" id="q5b" name="q5"> Coca</label><br>
+        <label><input type="radio" id="q5c" name="q5"> Jus d’ananas</label>
+      </div>
+      <div class="question">
+        <h3>6. Quel domaine le passionne ?</h3>
+        <label><input type="radio" id="q6a" name="q6"> L’ingénierie</label><br>
+        <label><input type="radio" id="q6b" name="q6"> Le sport</label><br>
+        <label><input type="radio" id="q6c" name="q6"> La mode</label>
+      </div>
+      <button type="submit">Valider mes réponses</button>
+      <p class="result" id="resultat"></p>
+    </form>
+    <br>
+    <a href="index.html"><button>🏠 Retour à l'accueil</button></a>
+  </div>
+</body>
+</html>
